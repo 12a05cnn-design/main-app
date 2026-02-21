@@ -1,0 +1,170 @@
+{
+  "model_version": "v2-appliance-aware",
+  "feature_cols": [
+    "month",
+    "day_of_week",
+    "is_weekend",
+    "day_of_year",
+    "week_of_year",
+    "quarter",
+    "is_summer",
+    "is_monsoon",
+    "is_winter",
+    "avg_temperature",
+    "lag_1d",
+    "lag_7d",
+    "lag_30d",
+    "rolling_7",
+    "rolling_14",
+    "rolling_30",
+    "std_7",
+    "cycle_day",
+    "cycle_cumulative_kwh",
+    "projected_cycle_kwh",
+    "num_appliance_types",
+    "total_appliance_count",
+    "total_rated_watts",
+    "appliance_daily_kwh",
+    "ac_count",
+    "heater_count",
+    "fan_count",
+    "light_count",
+    "heavy_appliance_count",
+    "has_ac",
+    "has_heater",
+    "tariff_code",
+    "size_code"
+  ],
+  "time_features": [
+    "month",
+    "day_of_week",
+    "is_weekend",
+    "day_of_year",
+    "week_of_year",
+    "quarter",
+    "is_summer",
+    "is_monsoon",
+    "is_winter",
+    "avg_temperature",
+    "lag_1d",
+    "lag_7d",
+    "lag_30d",
+    "rolling_7",
+    "rolling_14",
+    "rolling_30",
+    "std_7",
+    "cycle_day",
+    "cycle_cumulative_kwh",
+    "projected_cycle_kwh"
+  ],
+  "appliance_features": [
+    "num_appliance_types",
+    "total_appliance_count",
+    "total_rated_watts",
+    "appliance_daily_kwh",
+    "ac_count",
+    "heater_count",
+    "fan_count",
+    "light_count",
+    "heavy_appliance_count",
+    "has_ac",
+    "has_heater",
+    "tariff_code",
+    "size_code"
+  ],
+  "target_col": "daily_kwh",
+  "val_mae": 0.2958,
+  "val_rmse": 0.381,
+  "val_r2": 0.9993,
+  "trained_at": "2026-02-21T22:38:18.519692",
+  "tariff_code_map": {
+    "0": "DOMESTIC",
+    "1": "COMMERCIAL",
+    "2": "COTTAGE"
+  },
+  "size_code_map": {
+    "0": "small",
+    "1": "medium",
+    "2": "large",
+    "3": "commercial",
+    "4": "cottage"
+  },
+  "tariff_configs": {
+    "DOMESTIC": {
+      "slabs": [
+        {
+          "lower": 0,
+          "upper": 100,
+          "rate": 0.0
+        },
+        {
+          "lower": 100,
+          "upper": 200,
+          "rate": 1.5
+        },
+        {
+          "lower": 200,
+          "upper": 500,
+          "rate": 3.0
+        },
+        {
+          "lower": 500,
+          "upper": 1000,
+          "rate": 5.0
+        },
+        {
+          "lower": 1000,
+          "upper": null,
+          "rate": 7.0
+        }
+      ],
+      "fixed_charge": 30.0,
+      "meter_rent": 10.0,
+      "duty_rate": 0.16
+    },
+    "COMMERCIAL": {
+      "slabs": [
+        {
+          "lower": 0,
+          "upper": 100,
+          "rate": 3.5
+        },
+        {
+          "lower": 100,
+          "upper": 500,
+          "rate": 5.0
+        },
+        {
+          "lower": 500,
+          "upper": null,
+          "rate": 7.0
+        }
+      ],
+      "fixed_charge": 75.0,
+      "meter_rent": 20.0,
+      "duty_rate": 0.2
+    },
+    "COTTAGE": {
+      "slabs": [
+        {
+          "lower": 0,
+          "upper": 100,
+          "rate": 0.0
+        },
+        {
+          "lower": 100,
+          "upper": 250,
+          "rate": 2.0
+        },
+        {
+          "lower": 250,
+          "upper": null,
+          "rate": 3.5
+        }
+      ],
+      "fixed_charge": 20.0,
+      "meter_rent": 10.0,
+      "duty_rate": 0.16
+    }
+  }
+}
