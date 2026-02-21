@@ -129,8 +129,8 @@ def get_db():
 
 
 # ─── ML MODEL ─────────────────────────────────────────────────────────────────
-MODEL_PATH = "C:/Users/ELCOT/Downloads/files/eb-prediction/model_artifacts/xgb_model.pkl"
-METADATA_PATH = "C:/Users/ELCOT/Downloads/files/eb-prediction/model_artifacts/metadata.json"
+MODEL_PATH = "model_artifacts/xgb_model.pkl"
+METADATA_PATH = "model_artifacts/metadata.json"
 
 model = None
 feature_cols = None
