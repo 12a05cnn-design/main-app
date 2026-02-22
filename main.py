@@ -517,6 +517,15 @@ def predict(household_id: str, days_ahead: int = Query(default=30, ge=1, le=60))
         app_feats  = _get_app_feats(conn, household_id)
         app_feats["tariff_code"] = TARIFF_CODE.get(tariff, 0)
         app_feats["size_code"]   = SIZE_CODE.get(hh.get("size_tag","medium"), 1)
+        cycle_days = BILLING_CYCLE_DAYS_MAP.get(cycle, 60)
+        today = date.today()
+        try:
+            cs = date.fromisoformat(str(hh.get("billing_cycle_start") or today.replace(day=1).isoformat()))
+        except Exception:
+            cs = today.replace(day=1)
+        days_elapsed   = max(1, (today - cs).days)
+        days_remaining = max(0, cycle_days - days_elapsed)
+    days_ahead = min(days_ahead.days_remaining)
     forecast = build_forecast(recent, kwh_so_far, days_ahead,
                               date.today() + timedelta(days=1), app_feats, tariff, cycle)
     return {
