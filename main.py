@@ -525,7 +525,7 @@ def predict(household_id: str, days_ahead: int = Query(default=30, ge=1, le=60))
             cs = today.replace(day=1)
         days_elapsed   = max(1, (today - cs).days)
         days_remaining = max(0, cycle_days - days_elapsed)
-    days_ahead = min(days_ahead.days_remaining)
+    days_ahead = min(days_ahead,days_remaining)
     forecast = build_forecast(recent, kwh_so_far, days_ahead,
                               date.today() + timedelta(days=1), app_feats, tariff, cycle)
     return {
